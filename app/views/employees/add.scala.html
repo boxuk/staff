@@ -1,0 +1,23 @@
+@(newEmployeeForm: Form[(String, String, String, String, String, String)])(implicit flash: Flash)
+
+@import helper._
+
+@main("") {
+
+  <h3>Add employee</h3>
+
+  @if(flash.data.contains("error")){
+    <div class="alert alert-error">Error @flash.get("error")</div>
+  }
+
+  @form(routes.Employees.create) {
+    <input type="text" name="first" placeholder="" />
+    <input type="text" name="last" placeholder="" />
+    <input name="email" placeholder="" />
+    <input name="phone" placeholder="" />
+    <input name="website" placeholder="" />
+    <textarea name="bio"></textarea>
+    <input type="submit" value="Submit" class="btn" />
+  }
+}
+
