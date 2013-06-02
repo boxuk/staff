@@ -4,6 +4,8 @@
 
 # Home page
 
+GET /home                          controllers.Application.index
+
 ## Employees
 
 GET /                              controllers.Employees.index

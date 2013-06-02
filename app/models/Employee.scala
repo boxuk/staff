@@ -5,6 +5,8 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
+import lib.{ Gravatar }
+
 case class Employee(
   id:      Option[Long],
   first:   String,
@@ -29,6 +31,8 @@ object Employee {
       }
     }
   }
+
+  def gravatar(email: String, size: Int) = new Gravatar(email).url(size)
 
   def build(e: (String,String,String,String,String,String)): Employee = {
     Employee(None, e._1, e._2, e._3, e._4, e._5, e._6)

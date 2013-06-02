@@ -1,12 +1,10 @@
 @(employees: List[Employee])
 
-@main("") {
-
-  <h2>All Staff</h2>
+@main("BoxUK Staff") {
 
   @employees.map { employee =>
     <div class="employee">
-      <img src="https://secure.gravatar.com/avatar/1ae620d03681e7425c6ebb839f499449?s=420&d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" class="avatar" />
+      <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />
       <div class="employee-name"><a href="/employees/@employee.id">@Employee.name(employee)</a></div>
     </div>
   }
