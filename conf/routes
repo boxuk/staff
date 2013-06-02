@@ -4,14 +4,21 @@
 
 # Home page
 
-GET /home                          controllers.Application.index
+GET /                              controllers.Application.index
 
 ## Employees
 
-GET /                              controllers.Employees.index
+GET /employees                     controllers.Employees.index
 GET /employees/new                 controllers.Employees.add
 GET /employees/:id                 controllers.Employees.show(id: Long)
 POST /employees                    controllers.Employees.create
 
+## Roles
+
+## API
+
+GET /api/employees                controllers.api.Employees.index
+
 # Map static resources from the /public folder to the /assets URL path
+
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
