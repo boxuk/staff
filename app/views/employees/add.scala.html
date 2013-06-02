@@ -6,17 +6,37 @@
 
   <h3>Add employee</h3>
 
+  @flash.data
+
   @if(flash.data.contains("error")){
     <div class="alert alert-error">Error @flash.get("error")</div>
   }
 
   @form(routes.Employees.create) {
-    <input type="text" name="first" placeholder="" />
-    <input type="text" name="last" placeholder="" />
-    <input name="email" placeholder="" />
-    <input name="phone" placeholder="" />
-    <input name="website" placeholder="" />
-    <textarea name="bio"></textarea>
+    <div class="field">
+      <label>First name</label>
+      <input type="text" name="first_name" placeholder="" />
+    </div>
+    <div class="field">
+      <label>Last name</label>
+      <input type="text" name="last_name" placeholder="" />
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input name="email" placeholder="" />
+    </div>
+    <div class="field">
+      <label>Phone</label>
+      <input name="phone" placeholder="" />
+    </div>
+    <div class="field">
+      <label>Website</label>
+      <input name="website" placeholder="" />
+    </div>
+    <div class="field">
+      <label>Bio (a brief description about your interests)</label>
+      <textarea name="bio"></textarea>
+    </div>
     <input type="submit" value="Submit" class="btn" />
   }
 }

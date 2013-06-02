@@ -5,6 +5,8 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
+import models.Employee
+
 object Employees extends Controller {
 
   val employeeForm = Form(
@@ -28,8 +30,16 @@ object Employees extends Controller {
 
   def create = Action { implicit request =>
     employeeForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.employees.add(errors)).flashing("error" -> "error"),
-      { case (first, last, email, phone, website, bio) => Redirect(routes.Employees.index()) }
+      errors => {
+        BadRequest(views.html.employees.add(errors))
+      },
+      employee => {
+        val e = (Employee.apply _).tupled(employee)
+        Employee.create(e)
+        Redirect(routes.Application.index).flashing(
+          "message" -> "A new employee was created"
+        )
+      }
     )
   }
 }
