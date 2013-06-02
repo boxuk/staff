@@ -1,7 +1,14 @@
-@(message: String)
+@(recent: List[Employee])
 
 @home("BoxUK Staff Portal") {
 
-  <p>Some text will go in here</p>
-
+  <section id="recent">
+    <h3>Recent People</h3>
+    @recent.map { employee =>
+      <div class="employee">
+        <a href="/employees/@employee.id">@Employee.name(employee)</a>
+        <div>Software developer</div>
+      </div>
+    }
+  </section>
 }

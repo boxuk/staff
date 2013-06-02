@@ -11,13 +11,7 @@
     <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
   </head>
   <body id="home">
-    <nav id="main-nav">
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="/employees">Employees</a></li>
-        <li><a href="#">Add +</a></li>
-      </ul>
-    </nav>
+    @nav()
     <section id="hero">
       <header>
         <hgroup>
@@ -26,7 +20,7 @@
         </hgroup>
       </header>
     </section>
-    <div id="main" class="container">
+    <div class="container">
       @content
     </div>
   </body>

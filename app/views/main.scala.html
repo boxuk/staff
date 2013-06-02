@@ -11,18 +11,8 @@
     <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
   </head>
   <body>
-    <header id="header">
-      <h1>Staff</h1>
-    </header>
-    <div id="sidebar">
-      <nav>
-        <ul>
-          <li><a href="@routes.Employees.index">Home</a></li>
-          <li><a href="@routes.Employees.add">New Employee</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div id="main">
+    @nav()
+    <div id="main" class="container">
       @content
     </div>
   </body>

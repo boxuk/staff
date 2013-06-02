@@ -20,6 +20,8 @@ object Employees extends Controller {
     )
   )
 
+  // CRUD
+
   def index() = Action {
     Ok(views.html.employees.index(Employee.all))
   }

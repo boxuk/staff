@@ -1,25 +1,37 @@
-body { background: #eee; margin: 0; padding: 0 }
+body { background: #f3f3f3; margin: 0; padding: 0 }
+
+.container { width: 90%; }
+
+// HOME
 
 #hero {
-  height: 500px;
+  height: 400px;
   background: #555 url(http://kinhr.com/wp-content/uploads/2013/01/bg-hero1.jpg) no-repeat center top;
   background-size: cover;
   width: 100%;
 
-  h1 { text-align: center; padding-top: 80px; color: #FFF; }
+  h1 { text-align: center; padding-top: 100px; color: #FFF; }
   h2 { text-align: center; color: #FFF; font-size: 20px; }
+}
+
+#recent {
+  padding: 20px 0;
+  .employee { margin: 20px 20px 0; }
 }
 
 #main-nav {
   position: fixed;
-  padding: 20px 40px;
-  background: rgba(0,0,0,0.85);
+  padding: 20px 24px;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
   top: 0;
   left: 0;
   ul { margin: 0; padding: 0 }
   li { display: inline; color: #FFF; margin-right: 10px; }
   a  { color: #FFF }
 }
+
+// App
 
 .avatar {
   width: 100px;
@@ -61,20 +73,12 @@ label { color: #666; }
   }
 }
 
-#sidebar {
-  padding: 48px 0;
-  width: 200px;
-  background: #222;
-  height: 100%;
-  position: fixed;
-
-  a { color: #999; }
-}
-
 #main {
-  padding: 48px;
-  margin-left: 200px;
-  max-width: 600px;
+  padding: 24px;
+  background: #FFF;
+  border: 1px solid #eee;
+  margin: 80px auto;
+  overflow: hidden;
 }
 
 .employee {
@@ -82,5 +86,5 @@ label { color: #666; }
   margin: 10px 10px 0 0;
 }
 
- h2.role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; }
+ h2.role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }
 
