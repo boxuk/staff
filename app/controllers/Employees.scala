@@ -21,7 +21,12 @@ object Employees extends Controller {
   )
 
   def index() = Action {
-    Ok(views.html.employees.index())
+    Ok(views.html.employees.index(Employee.all))
+  }
+
+  def show(id: Long) = Action {
+    val e: Option[Employee] = Employee.findById(id)
+    Ok(views.html.employees.show(e))
   }
 
   def add = Action { implicit request =>
@@ -34,9 +39,9 @@ object Employees extends Controller {
         BadRequest(views.html.employees.add(errors))
       },
       employee => {
-        val e = (Employee.apply _).tupled(employee)
+        val e: Employee = Employee.build(employee)
         Employee.create(e)
-        Redirect(routes.Application.index).flashing(
+        Redirect(routes.Employees.index).flashing(
           "message" -> "A new employee was created"
         )
       }

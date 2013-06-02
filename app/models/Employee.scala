@@ -6,6 +6,7 @@ import anorm._
 import anorm.SqlParser._
 
 case class Employee(
+  id:      Option[Long],
   first:   String,
   last:    String,
   email:   String,
@@ -16,26 +17,48 @@ case class Employee(
 object Employee {
 
   val employee = {
+    get[Long]("id")~
     get[String]("first_name")~
     get[String]("last_name")~
     get[String]("email")~
     get[String]("phone")~
     get[String]("website")~
     get[String]("bio") map {
-      case (first ~ last ~ email ~ phone ~ website ~ bio) => {
-        Employee(first, last, email, phone, website, bio)
+      case (id~first~last~email~phone~website~bio) => {
+        Employee(Some(id), first, last, email, phone, website, bio)
       }
     }
   }
+
+  def build(e: (String,String,String,String,String,String)): Employee = {
+    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6)
+  }
+
+  def name(e: Employee): String = e.first + " " + e.last
 
   def all(): List[Employee] = DB.withConnection { implicit c =>
     SQL("""select * from employees""").as(employee *)
   }
 
-  def create(employee: Employee): Unit = { }
+  def findById(id: Long): Option[Employee] = DB.withConnection { implicit c =>
+    SQL("select * from employees where id = {id}").on('id -> id)
+                                                  .as(employee.singleOpt)
+  }
 
-  def findById(id: Long): Option[Employee] = {
-    None
+  def create(employee: Employee): Unit = {
+    DB.withConnection { implicit c =>
+      SQL(
+        """insert into employees (first_name, last_name, email, phone, website, bio)
+           values ({first}, {last}, {email}, {phone}, {website}, {bio})"""
+      ).on(
+        'first   -> employee.first,
+        'last    -> employee.last,
+        'email   -> employee.email,
+        'phone   -> employee.phone,
+        'website -> employee.website,
+        'bio     -> employee.bio
+      ).executeUpdate()
+    }
   }
 
   def gravatarUrl(email: String): String = {
