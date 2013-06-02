@@ -2,7 +2,25 @@ body { background: #eee; margin: 0; padding: 0 }
 
 .avatar { width: 150px; border: 1px solid #ccc; background: #eee; height: 150px; }
 
-#header { height: 48px; background: #FFF; width: 100%; }
+#header {
+  height: 48px;
+  background: #FFF;
+  width: 100%;
+  padding: 0 48px;
+  h1 {
+    line-height: 40px;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    span { margin-left: 24px;
+           font-size: 14px;
+           color: #666;
+           font-family: georgia;
+           font-weight: 100;
+           font-style: italic }
+  }
+}
 
 #sidebar {
   padding: 48px 0;
