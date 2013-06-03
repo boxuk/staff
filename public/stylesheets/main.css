@@ -6,6 +6,9 @@ body {
 .container {
   width: 90%; }
 
+h1, h2, h3 {
+  color: #222f3d; }
+
 #hero {
   height: 400px;
   background: #555555 url(/assets/images/office.jpg) no-repeat center top fixed;
@@ -29,7 +32,7 @@ body {
   position: fixed;
   padding: 20px 24px;
   width: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: #34495e;
   top: 0;
   left: 0; }
   #main-nav ul {
@@ -58,26 +61,6 @@ label {
 
 .field {
   margin: 0 0 10px; }
-
-#header {
-  height: 48px;
-  background: #FFF;
-  width: 100%;
-  padding: 0 48px;
-  border-bottom: 2px solid #ccc; }
-  #header h1 {
-    line-height: 48px;
-    font-size: 24px;
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase; }
-    #header h1 span {
-      margin-left: 24px;
-      font-size: 14px;
-      color: #666;
-      font-family: georgia;
-      font-weight: 100;
-      font-style: italic; }
 
 #main {
   padding: 24px;

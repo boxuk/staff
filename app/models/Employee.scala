@@ -10,6 +10,8 @@ import play.api.libs.json._
 
 import lib.{ Gravatar }
 
+import models.Role
+
 case class Employee(
   id:      Option[Long],
   first:   String,
@@ -78,8 +80,10 @@ object Employee {
     }
   }
 
-  def gravatarUrl(email: String): String = {
-    ""
+  def delete(id: Long): Unit = {
+    DB.withConnection { implicit c =>
+      SQL("delete from employees where id = {id}").on('id -> id).executeUpdate()
+    }
   }
 
   // JSON serialization

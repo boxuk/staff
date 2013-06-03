@@ -10,12 +10,20 @@ object Employees extends Controller {
 
   private val json = "application/json"
 
-  // GET /api/employees
+  /**
+   * Returns a JSON response listing all employees
+   * GET /api/employees
+   *
+   */
   def index() = Action {
     val employees: List[Employee] = Employee.all()
     Ok(Json.toJson(employees)).as(json)
   }
 
+  /**
+   * Returns a JSON repsonse listing information for a single employee
+   *
+   */
   def show(id: Long) = Action {
     val employee: Option[Employee] = Employee.findById(id)
     Ok(Json.toJson(employee)).as(json)
