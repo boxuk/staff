@@ -5,7 +5,10 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
-// A role i.e software developer, project manager etc
+import play.api.libs.functional.syntax._
+import play.api.libs.json._
+
+// A role represents a job title -> i.e software developer, project manager etc
 case class Role(id: Long, role: String)
 
 object Role {
@@ -27,10 +30,15 @@ object Role {
   }
 
   def create(role: String): Unit = {
+    println(role)
     DB.withConnection { implicit c =>
       SQL("insert into roles (role_type) values ({role})").on(
         'role   -> role
       ).executeUpdate()
     }
   }
+
+  // JSON serialization methods
+  implicit val roleFormat = Json.writes[Role]
+  implicit val roleReads  = Json.reads[Role]
 }
