@@ -1,1 +1,99 @@
-body{background:#f3f3f3;margin:0;padding:0}.container{width:90%}#hero{height:400px;background:#111 url(/assets/images/office2.jpg) no-repeat center top;background-size:cover;width:100%}#hero h1{text-align:center;padding-top:140px;color:#FFF}#hero h2{text-align:center;color:#FFF;font-size:20px}#recent{padding:20px 0 20px 0}#recent .employee{margin:20px 20px 0}#main-nav{position:fixed;padding:20px 24px;width:100%;background:rgba(0,0,0,0.8);top:0;left:0}#main-nav ul{margin:0;padding:0}#main-nav li{display:inline;color:#FFF;margin-right:10px}#main-nav a{color:#fff}.avatar{width:100px;border:1px solid #ccc;background:#eee;margin:24px 0}textarea{width:100%;height:300px;margin:0 0 20px}label{color:#666}.field{margin:0 0 10px}#header{height:48px;background:#FFF;width:100%;padding:0 48px;border-bottom:2px solid #ccc}#header h1{line-height:48px;font-size:24px;margin:0;padding:0;text-transform:uppercase}#header h1 span{margin-left:24px;font-size:14px;color:#666;font-family:georgia;font-weight:100;font-style:italic}#main{padding:24px;background:#FFF;border:1px solid #eee;margin:80px auto;overflow:hidden}.employee{float:left;margin:10px 10px 0 0}h2.role{font-size:20px;font-family:georgia;font-weight:100;color:#666;margin:0 0 20px}
+body {
+  background: #f3f3f3;
+  margin: 0;
+  padding: 0; }
+
+.container {
+  width: 90%; }
+
+#hero {
+  height: 400px;
+  background: #555555 url(/assets/images/office.jpg) no-repeat center top fixed;
+  background-size: cover;
+  width: 100%; }
+  #hero h1 {
+    text-align: center;
+    padding-top: 140px;
+    color: #FFF; }
+  #hero h2 {
+    text-align: center;
+    color: #FFF;
+    font-size: 20px; }
+
+#recent {
+  padding: 20px 0; }
+  #recent .employee {
+    margin: 20px 20px 0 0; }
+
+#main-nav {
+  position: fixed;
+  padding: 20px 24px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  top: 0;
+  left: 0; }
+  #main-nav ul {
+    margin: 0;
+    padding: 0; }
+  #main-nav li {
+    display: inline;
+    color: #FFF;
+    margin-right: 10px; }
+  #main-nav a {
+    color: white; }
+
+.avatar {
+  width: 100px;
+  border: 1px solid #ccc;
+  background: #eee;
+  margin: 24px 0; }
+
+textarea {
+  width: 100%;
+  height: 300px;
+  margin: 0 0 20px; }
+
+label {
+  color: #666; }
+
+.field {
+  margin: 0 0 10px; }
+
+#header {
+  height: 48px;
+  background: #FFF;
+  width: 100%;
+  padding: 0 48px;
+  border-bottom: 2px solid #ccc; }
+  #header h1 {
+    line-height: 48px;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase; }
+    #header h1 span {
+      margin-left: 24px;
+      font-size: 14px;
+      color: #666;
+      font-family: georgia;
+      font-weight: 100;
+      font-style: italic; }
+
+#main {
+  padding: 24px;
+  background: #FFF;
+  border: 1px solid #eee;
+  margin: 80px auto;
+  overflow: hidden;
+  box-shadow: 1px 1px 0 #ccc; }
+
+.employee {
+  float: left;
+  margin: 10px 10px 0 0; }
+
+.role {
+  font-size: 20px;
+  font-family: georgia;
+  font-weight: 100;
+  color: #666;
+  margin: 0 0 20px; }

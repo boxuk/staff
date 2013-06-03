@@ -1,4 +1,4 @@
-body { background: #f3f3f3; margin: 0; padding: 0 }
+body { background: #f3f3f3; margin: 0; padding: 0; }
 
 .container { width: 90%; }
 
@@ -6,7 +6,7 @@ body { background: #f3f3f3; margin: 0; padding: 0 }
 
 #hero {
   height: 400px;
-  background: #555 url(/assets/images/office2.jpg) no-repeat center top;
+  background: #555 url(/assets/images/office.jpg) no-repeat center top fixed;
   background-size: cover;
   width: 100%;
 
@@ -79,6 +79,7 @@ label { color: #666; }
   border: 1px solid #eee;
   margin: 80px auto;
   overflow: hidden;
+  box-shadow: 1px 1px 0 #ccc;
 }
 
 .employee {
@@ -86,5 +87,5 @@ label { color: #666; }
   margin: 10px 10px 0 0;
 }
 
- h2.role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }
+ .role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }
 

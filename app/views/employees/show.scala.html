@@ -5,8 +5,8 @@
   @employee match {
     case None    => {}
     case Some(e) => {
-      <h1>@Employee.name(e)</h1>
-      <h2 class="role">Software Developer</h2>
+      <h2>@Employee.name(e)</h2>
+      <h3 class="role">Software Developer</h3>
       <img src="@Employee.gravatar(e.email, 100)" alt="@Employee.name(e)" class="gravatar" />
       <p>EMAIL: @e.email</p>
       <p>PHONE: @e.phone</p>

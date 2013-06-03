@@ -11,11 +11,11 @@ import models.{ Role }
 
 object Roles extends Controller {
 
-  // val roleForm = Form(
-  //   tuple(
-  //     "role" -> text
-  //   )
-  // )
+  val roleForm = Form(
+   tuple(
+     "role" -> text
+   )
+  )
 
   def index() = Action {
     Ok(views.html.roles.index(Role.all()))

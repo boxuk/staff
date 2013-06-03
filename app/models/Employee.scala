@@ -35,8 +35,11 @@ object Employee {
     }
   }
 
-  def gravatar(email: String, size: Int) = new Gravatar(email).url(size)
+  def gravatar(email: String, size: Int) =
+    new Gravatar(email).url(size)
 
+  /** Build Employee without ID probably a much better way to do this
+   *  using tupled and apply */
   def build(e: (String,String,String,String,String,String)): Employee = {
     Employee(None, e._1, e._2, e._3, e._4, e._5, e._6)
   }
