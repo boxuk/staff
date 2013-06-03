@@ -6,17 +6,17 @@ body { background: #f3f3f3; margin: 0; padding: 0 }
 
 #hero {
   height: 400px;
-  background: #555 url(http://kinhr.com/wp-content/uploads/2013/01/bg-hero1.jpg) no-repeat center top;
+  background: #555 url(/assets/images/office2.jpg) no-repeat center top;
   background-size: cover;
   width: 100%;
 
-  h1 { text-align: center; padding-top: 100px; color: #FFF; }
+  h1 { text-align: center; padding-top: 140px; color: #FFF; }
   h2 { text-align: center; color: #FFF; font-size: 20px; }
 }
 
 #recent {
   padding: 20px 0;
-  .employee { margin: 20px 20px 0; }
+  .employee { margin: 20px 20px 0 0; }
 }
 
 #main-nav {

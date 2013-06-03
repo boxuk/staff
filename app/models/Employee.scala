@@ -5,6 +5,9 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
+import play.api.libs.functional.syntax._
+import play.api.libs.json._
+
 import lib.{ Gravatar }
 
 case class Employee(
@@ -75,5 +78,9 @@ object Employee {
   def gravatarUrl(email: String): String = {
     ""
   }
+
+  // JSON serialization
+  implicit val employeeFormat = Json.writes[Employee]
+  implicit val employeeReads  = Json.reads[Employee]
 }
 

@@ -14,8 +14,17 @@ Staff allows people to look up email addresses, find out information about what 
 
 ### Employees
 
-```scala
-
+Get all employees
 
 ```
+GET /api/employees
+```
+
+Get a single employee by ID
+
+```
+GET /api/employees/:id
+```
+
+
 

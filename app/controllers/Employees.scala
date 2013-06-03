@@ -15,8 +15,8 @@ object Employees extends Controller {
       "last_name"    -> nonEmptyText,
       "email"        -> nonEmptyText,
       "phone"        -> nonEmptyText,
-      "website"      -> nonEmptyText,
-      "bio"          -> nonEmptyText
+      "website"      -> text,
+      "bio"          -> text
     )
   )
 
