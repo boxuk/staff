@@ -15,6 +15,10 @@ POST /employees                    controllers.Employees.create
 
 ## Roles
 
+GET /roles                         controllers.Roles.index
+GET /roles/new                     controllers.Roles.add
+POST /roles                        controllers.Roles.create
+
 ## API
 
 GET /api/employees                controllers.api.Employees.index

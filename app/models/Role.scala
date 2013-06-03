@@ -25,4 +25,12 @@ object Role {
     SQL("""select * from roles where id = {id}""").on('id -> id)
                                                   .as(role.singleOpt)
   }
+
+  def create(role: String): Unit = {
+    DB.withConnection { implicit c =>
+      SQL("insert into roles (role_type) values ({role})").on(
+        'role   -> role
+      ).executeUpdate()
+    }
+  }
 }

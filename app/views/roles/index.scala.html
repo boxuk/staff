@@ -2,5 +2,11 @@
 
 @main("All roles") {
 
-
+  <h2>All roles</h2>
+  <a href="/roles/new">Add a new role</a>
+  <ul>
+    @roles.map { role =>
+      <li>@role.role</li>
+    }
+  </ul>
 }

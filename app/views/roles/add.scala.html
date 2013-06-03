@@ -1,6 +1,16 @@
+@(roleForm: Form[String])
+
+@import helper._
+
 @main("Add new role") {
 
   <h2>New Role</h2>
 
-
+  @form(routes.Roles.create) {
+    <div class="field">
+      <label name="role">Role name</label>
+      <input id="role" type="text" placeholder="e.g. software developer" />
+    </div>
+    <input type="submit" value="Submit" class="btn" />
+  }
 }
