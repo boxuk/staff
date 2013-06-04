@@ -3,6 +3,13 @@ body {
   margin: 0;
   padding: 0; }
 
+.alert {
+  padding: 20px;
+  background: #eee;
+  border: 2px solid #ccc;
+  margin: 20px 0;
+}
+
 .container {
   width: 90%; }
 

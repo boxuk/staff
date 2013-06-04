@@ -1,0 +1,11 @@
+@(form: Form[(String,String,String,String,String,String)])
+
+@if(form.hasErrors) {
+  <div class="alert alert-error">
+    <p>There were errors with the following fields</p>
+    @form.errors.map { err =>
+      <li>@err.key.toString()</li>
+    }
+  </div>
+}
+

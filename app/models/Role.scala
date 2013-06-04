@@ -9,14 +9,13 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
 // A role represents a job title -> i.e software developer, project manager etc
-case class Role(id: Long, role: String)
+case class Role(role: String)
 
 object Role {
 
   val role = {
-    get[Long]("id")~
     get[String]("role_type") map {
-      case (id~role) => Role(id, role)
+      case (role) => Role(role)
     }
   }
 
@@ -30,7 +29,6 @@ object Role {
   }
 
   def create(role: String): Unit = {
-    println(role)
     DB.withConnection { implicit c =>
       SQL("insert into roles (role_type) values ({role})").on(
         'role   -> role

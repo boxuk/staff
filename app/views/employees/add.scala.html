@@ -1,4 +1,4 @@
-@(newEmployeeForm: Form[(String, String, String, String, String, String)])(implicit flash: Flash)
+@(newEmployeeForm: Form[(String, String, String, String, String, String)], roles: List[Role])(implicit flash: Flash)
 
 @import helper._
 
@@ -6,11 +6,11 @@
 
   <h3>Add employee</h3>
 
-  @flash.data
-
   @if(flash.data.contains("error")){
     <div class="alert alert-error">Error @flash.get("error")</div>
   }
+
+  @formErrors(newEmployeeForm)
 
   @form(routes.Employees.create) {
     <div class="field">
@@ -31,8 +31,11 @@
     </div>
     <div class="field">
       <label>Role</label>
+      <br/>
       <select name="role">
-
+        @roles.map { role =>
+          <option val="">@role.role</option>
+        }
       </select>
     </div>
     <div class="field">

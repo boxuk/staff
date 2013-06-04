@@ -67,7 +67,7 @@ object Employees extends Controller with Github {
    *
    */
   def add = Action { implicit request =>
-    Ok(views.html.employees.add(employeeForm))
+    Ok(views.html.employees.add(employeeForm, models.Role.all))
   }
 
   /**
@@ -77,7 +77,7 @@ object Employees extends Controller with Github {
   def create = Action { implicit request =>
     employeeForm.bindFromRequest.fold(
       errors => {
-        BadRequest(views.html.employees.add(errors))
+        BadRequest(views.html.employees.add(errors, models.Role.all))
       },
       employee => {
         val e: Employee = Employee.build(employee)
