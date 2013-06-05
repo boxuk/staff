@@ -17,7 +17,8 @@ case class Employee(
   email:   String,
   phone:   String,
   website: String,
-  bio:     String)
+  bio:     String,
+  role:    Option[Long]=None)
 
 object Employee {
 
@@ -28,9 +29,10 @@ object Employee {
     get[String]("email")~
     get[String]("phone")~
     get[String]("website")~
-    get[String]("bio") map {
-      case (id~first~last~email~phone~website~bio) => {
-        Employee(Some(id), first, last, email, phone, website, bio)
+    get[String]("bio")~
+    get[Option[Long]]("role_id") map {
+      case (id~first~last~email~phone~website~bio~role) => {
+        Employee(Some(id), first, last, email, phone, website, bio, role)
       }
     }
   }
@@ -40,8 +42,8 @@ object Employee {
 
   /** Build Employee without ID probably a much better way to do this
    *  using tupled and apply */
-  def build(e: (String,String,String,String,String,String)): Employee = {
-    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6)
+  def build(e: (String,String,String,String,String,String, Option[Long])): Employee = {
+    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6, e._7)
   }
 
   def name(e: Employee): String = e.first + " " + e.last

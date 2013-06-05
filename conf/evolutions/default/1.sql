@@ -11,6 +11,7 @@ CREATE TABLE employees (
   phone      VARCHAR(255),
   website    VARCHAR(255),
   bio        VARCHAR(255),
+  role_id    INTEGER,
   UNIQUE (email)
 );
 
