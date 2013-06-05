@@ -10,16 +10,14 @@ import play.api.libs.json._
 
 import lib.{ Gravatar }
 
-import models.Role
-
 case class Employee(
-  id:      Option[Long],
+  id:      Option[Long]=None,
   first:   String,
   last:    String,
   email:   String,
   phone:   String,
   website: String,
-  bio:     String )
+  bio:     String)
 
 object Employee {
 

@@ -26,5 +26,13 @@ Get a single employee by ID
 GET /api/employees/:id
 ```
 
+## Deployment
+
+Staff is deployed and running on Heroku using Postgres
+
+```
+git push heroku master
+```
+
 
 

@@ -29,8 +29,15 @@ object Employees extends Controller {
     Ok(Json.toJson(employee)).as(json)
   }
 
-  def delete(id: Long) = Action {
-    Ok
+  /** DELETE /api/employees/:id */
+  def delete(id: Long) = Action { implicit request =>
+    request.body.asFormUrlEncoded match {
+      case Some(params) => {
+        val user = params.get("user").getOrElse("")
+        Ok(user.toString).as(json)
+      }
+      case None => BadRequest
+    }
   }
 
   def create() = Action {
