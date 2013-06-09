@@ -1,0 +1,1 @@
+sass --watch public/stylesheets:public/stylesheets --style compressed

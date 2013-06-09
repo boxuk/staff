@@ -9,13 +9,15 @@ body { background: #f3f3f3; margin: 0; padding: 0; }
   margin: 20px 0;
 }
 
-h1, h2, h3 { color: darken(#34495e, 10%); }
+$brand: #2a323a;
+
+h1, h2, h3 { color: $brand; }
 
 // HOME
 
 #hero {
   height: 400px;
-  background: #555 url(/assets/images/office.jpg) no-repeat center top fixed;
+  background: $brand url(/assets/images/office.jpg) no-repeat center top fixed;
   background-size: cover;
   width: 100%;
 
@@ -32,7 +34,7 @@ h1, h2, h3 { color: darken(#34495e, 10%); }
   position: fixed;
   padding: 20px 24px;
   width: 100%;
-  background: #34495e;
+  background: $brand;
   top: 0;
   left: 0;
   ul { margin: 0; padding: 0 }
