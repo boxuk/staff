@@ -36,7 +36,7 @@ object Employees extends Controller with Github {
   // CRUD
 
   def index() = Action {
-    Ok(views.html.employees.index(Employee.all))
+    Ok(views.html.employees.index(Employee.all, Role.all))
   }
 
   def edit(id: Long) = Action {
@@ -120,8 +120,8 @@ object Employees extends Controller with Github {
     Redirect(routes.Employees.index)
   }
 
-  def withRole(role_id: Int) = Action {
-    Ok(views.html.employees.index(Employee.byRole(role_id)))
+  def withRole(role_id: Long) = Action {
+    Ok(views.html.employees.index(Employee.byRole(role_id), Role.all))
   }
 }
 

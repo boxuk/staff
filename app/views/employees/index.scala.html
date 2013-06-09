@@ -1,7 +1,14 @@
-@(employees: List[Employee])
+@(employees: List[Employee], roles: List[Role])
 
 @main("BoxUK Staff") {
 
+  @roles.map { role =>
+    <li>
+      <a href="/employees/roles/@role.id">
+        @role.role
+      </a>
+    </li>
+  }
   @employees.map { employee =>
     <div class="employee">
       <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />

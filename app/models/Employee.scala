@@ -106,7 +106,7 @@ object Employee {
   }
 
   /** Finds all employees with a given role */
-  def byRole(role_id: Int): List[Employee] = {
+  def byRole(role_id: Long): List[Employee] = {
     DB.withConnection { implicit c =>
       SQL("select * from employees where role_id = {role_id}").on('role_id -> role_id)
                                                               .as(employee *)

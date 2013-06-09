@@ -14,8 +14,10 @@ GET /debug                         controllers.Application.header
 
 GET    /employees                  controllers.Employees.index
 GET    /employees/new              controllers.Employees.add
+GET    /employees/roles/:id        controllers.Employees.withRole(id: Long)
 GET    /employees/:id              controllers.Employees.show(id: Long)
 POST   /employees                  controllers.Employees.create
+
 GET   /employees/:id/edit          controllers.Employees.edit(id: Long)
 PUT   /employees/edit              controllers.Employees.update
 # DELETE /employees/:id            controllers.Employees.delete(id: Long)
