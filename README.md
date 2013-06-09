@@ -26,6 +26,12 @@ Get a single employee by ID
 GET /api/employees/:id
 ```
 
+Get all employees with a given role (i.e all designers, developers etc)
+
+```
+curl -X GET -i http://localhost:9000/api/employees/roles/1
+```
+
 ## Deployment
 
 Staff is deployed and running on Heroku using Postgres

@@ -29,6 +29,10 @@ object Employees extends Controller {
     Ok(Json.toJson(employee)).as(json)
   }
 
+  def withRole(id: Long) = Action {
+    Ok(Json.toJson(Employee.byRole(id))).as(json)
+  }
+
   /** DELETE /api/employees/:id */
   def delete(id: Long) = Action { implicit request =>
     request.body.asFormUrlEncoded match {
