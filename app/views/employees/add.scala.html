@@ -1,4 +1,4 @@
-@(newEmployeeForm: Form[(String, String, String, String, String, String)], roles: List[Role])(implicit flash: Flash)
+@(newEmployeeForm: Form[(String, String, String, String, Int, String, String)], roles: List[Role])(implicit flash: Flash)
 
 @import helper._
 
@@ -34,7 +34,7 @@
       <br/>
       <select name="role">
         @roles.map { role =>
-          <option val="">@role.role</option>
+          <option value="@role.id">@role.role</option>
         }
       </select>
     </div>

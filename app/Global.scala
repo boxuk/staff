@@ -12,12 +12,13 @@ object Global extends GlobalSettings {
 object SeedData {
 
   def insert() {
+    println("Seeding roles...")
     if(Role.all.isEmpty) {
       Seq(
         "developer",
         "consultant",
         "project manager"
-      ).foreach { _ => Role.create(_) }
+      ).foreach { r => Role.create(r) }
     }
   }
 }

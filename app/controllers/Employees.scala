@@ -27,6 +27,7 @@ object Employees extends Controller with Github {
       "last_name"    -> nonEmptyText,
       "email"        -> nonEmptyText,
       "phone"        -> nonEmptyText,
+      "role"         -> number,
       "website"      -> text,
       "bio"          -> text
     )

@@ -7,7 +7,9 @@
     @recent.map { employee =>
       <div class="employee">
         <div>
-        <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />
+        <img src="@Employee.gravatar(employee.email, 100)"
+             alt="@Employee.name(employee)"
+             class="gravatar" />
         </div>
         <a href="/employees/@employee.id">@Employee.name(employee)</a>
         <div>Software developer</div>

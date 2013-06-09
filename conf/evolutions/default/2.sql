@@ -1,6 +1,6 @@
 # --- !Ups
 
-ALTER TABLE employees ADD role_id integer;
+ALTER TABLE employees ADD role_id integer DEFAULT 1;
 
 # --- !Downs
 

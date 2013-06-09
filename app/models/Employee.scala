@@ -16,6 +16,7 @@ case class Employee(
   last:    String,
   email:   String,
   phone:   String,
+  role:    Int,
   website: String,
   bio:     String)
 
@@ -27,10 +28,11 @@ object Employee {
     get[String]("last_name")~
     get[String]("email")~
     get[String]("phone")~
+    get[Int]("role_id")~
     get[String]("website")~
     get[String]("bio") map {
-      case (id~first~last~email~phone~website~bio) => {
-        Employee(Some(id), first, last, email, phone, website, bio)
+      case (id~first~last~email~phone~role~website~bio) => {
+        Employee(Some(id), first, last, email, phone, role, website, bio)
       }
     }
   }
@@ -40,8 +42,8 @@ object Employee {
 
   /** Build Employee without ID probably a much better way to do this
    *  using tupled and apply */
-  def build(e: (String,String,String,String,String,String)): Employee = {
-    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6)
+  def build(e: (String,String,String,String,Int, String,String)): Employee = {
+    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6, e._7)
   }
 
   def name(e: Employee): String = e.first + " " + e.last
@@ -65,13 +67,14 @@ object Employee {
   def create(employee: Employee): Unit = {
     DB.withConnection { implicit c =>
       SQL(
-        """insert into employees (first_name, last_name, email, phone, website, bio)
-           values ({first}, {last}, {email}, {phone}, {website}, {bio})"""
+        """insert into employees (first_name, last_name, email, phone, role_id, website, bio)
+           values ({first}, {last}, {email}, {phone}, {role}, {website}, {bio})"""
       ).on(
         'first   -> employee.first,
         'last    -> employee.last,
         'email   -> employee.email,
         'phone   -> employee.phone,
+        'role    -> employee.role,
         'website -> employee.website,
         'bio     -> employee.bio
       ).executeUpdate()

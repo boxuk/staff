@@ -6,7 +6,9 @@
     case None    => {}
     case Some(e) => {
       <h2>@Employee.name(e)</h2>
-      <h3 class="role">Software Developer</h3>
+      <h3 class="role">
+        @Role.findById(e.role).get.role
+      </h3>
       <img src="@Employee.gravatar(e.email, 100)" alt="@Employee.name(e)" class="gravatar" />
       <p>EMAIL: @e.email</p>
       <p>PHONE: @e.phone</p>
