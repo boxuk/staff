@@ -5,7 +5,7 @@ import play.api.mvc._
 import play.api.data._
 import play.api.data.Forms._
 
-import models.Employee
+import models.{ Employee, Role }
 
 import play.api.libs.ws._
 import play.api.libs.concurrent._
@@ -37,6 +37,11 @@ object Employees extends Controller with Github {
 
   def index() = Action {
     Ok(views.html.employees.index(Employee.all))
+  }
+
+  def edit(id: Long) = Action {
+    val e: Option[Employee] = Employee.findById(id)
+    Ok(views.html.employees.edit(employeeForm, Role.all, e))
   }
 
   /**
@@ -75,7 +80,7 @@ object Employees extends Controller with Github {
   def create = Action { implicit request =>
     employeeForm.bindFromRequest.fold(
       errors => {
-        BadRequest(views.html.employees.add(errors, models.Role.all))
+        BadRequest(views.html.employees.add(errors, Role.all))
       },
       employee => {
         val e: Employee = Employee.build(employee)
@@ -88,12 +93,35 @@ object Employees extends Controller with Github {
   }
 
   /**
+   * Updates an existing employee record
+   *
+   */
+  def update = Action { implicit request =>
+    employeeForm.bindFromRequest.fold(
+      errors => {
+        BadRequest(views.html.employees.edit(errors, Role.all, None))
+      },
+      employee => {
+        val e: Employee = Employee.build(employee)
+        Employee.update(e)
+        Redirect(routes.Employees.index).flashing(
+          "message" -> "Employee was updated"
+        )
+      }
+    )
+  }
+
+  /**
    * Deletes an employee by ID
    *
    */
   def delete(id: Long) = Action {
     Employee.delete(id)
     Redirect(routes.Employees.index)
+  }
+
+  def withRole(role_id: Int) = Action {
+    Ok(views.html.employees.index(Employee.byRole(role_id)))
   }
 }
 

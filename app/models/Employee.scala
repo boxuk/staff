@@ -81,9 +81,35 @@ object Employee {
     }
   }
 
+  def update(employee: Employee): Unit = {
+    val idx = employee.id
+    if (idx.isDefined) {
+      DB.withConnection { implicit c =>
+        SQL("""update employees set
+               first_name = {first}
+               last_name  = {last}
+               where id = {id}""")
+        .on(
+          'first -> employee.first,
+          'last  -> employee.last,
+          'id    -> idx.get
+        )
+      }
+    }
+  }
+
   def delete(id: Long): Unit = {
     DB.withConnection { implicit c =>
-      SQL("delete from employees where id = {id}").on('id -> id).executeUpdate()
+      SQL("delete from employees where id = {id}").on('id -> id)
+                                                  .executeUpdate()
+    }
+  }
+
+  /** Finds all employees with a given role */
+  def byRole(role_id: Int): List[Employee] = {
+    DB.withConnection { implicit c =>
+      SQL("select * from employees where role_id = {role_id}").on('role_id -> role_id)
+                                                              .as(employee *)
     }
   }
 

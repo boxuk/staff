@@ -13,40 +13,7 @@
   @formErrors(newEmployeeForm)
 
   @form(routes.Employees.create) {
-    <div class="field">
-      <label>First name</label>
-      <input type="text" name="first_name" placeholder="" />
-    </div>
-    <div class="field">
-      <label>Last name</label>
-      <input type="text" name="last_name" placeholder="" />
-    </div>
-    <div class="field">
-      <label>Email</label>
-      <input type="email" name="email" placeholder="" />
-    </div>
-    <div class="field">
-      <label>Phone</label>
-      <input type="text" name="phone" placeholder="" />
-    </div>
-    <div class="field">
-      <label>Role</label>
-      <br/>
-      <select name="role">
-        @roles.map { role =>
-          <option value="@role.id">@role.role</option>
-        }
-      </select>
-    </div>
-    <div class="field">
-      <label>Website</label>
-      <input type="text" name="website" placeholder="" />
-    </div>
-    <div class="field">
-      <label>Bio (a brief description about your interests)</label>
-      <textarea name="bio"></textarea>
-    </div>
-    <input type="submit" value="Submit" class="btn" />
+    @employeeForm(roles)
   }
 }
 
