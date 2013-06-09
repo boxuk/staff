@@ -9,13 +9,14 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
 // A role represents a job title -> i.e software developer, project manager etc
-case class Role(role: String)
+case class Role(id: Long, role: String)
 
 object Role {
 
   val role = {
+    get[Long]("id")~
     get[String]("role_type") map {
-      case (role) => Role(role)
+      case id~role => Role(id,role)
     }
   }
 

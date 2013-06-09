@@ -14,10 +14,10 @@ object SeedData {
   def insert() {
     if(Role.all.isEmpty) {
       Seq(
-        Role("developer"),
-        Role("consultant"),
-        Role("project manager")
-      ).foreach { role => Role.create(role.role) }
+        "developer",
+        "consultant",
+        "project manager"
+      ).foreach { _ => Role.create(_) }
     }
   }
 }
