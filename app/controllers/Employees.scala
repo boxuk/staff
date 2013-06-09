@@ -12,14 +12,11 @@ import play.api.libs.concurrent._
 import play.api.libs.concurrent.Execution.Implicits._
 
 trait Github {
-
-  def get(url: String) = {
+  def get(url: String) =
     WS.url(url).get().map { response => response.body }
-  }
 
-  def profile(username: String) = {
+  def profile(username: String) =
     get("https://api.github.com/users/" ++ username)
-  }
 }
 
 object Employees extends Controller with Github {

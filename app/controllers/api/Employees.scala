@@ -40,8 +40,8 @@ object Employees extends Controller {
     }
   }
 
-  def create() = Action {
-    Ok
-  }
+  def create() = Action { Ok }
+
+  def update() = Action { Ok }
 }
 
