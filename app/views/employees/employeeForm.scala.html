@@ -1,13 +1,19 @@
-@(roles: List[Role])
+@(roles: List[Role], e: Option[Employee]=None)
 
 <div class="field">
   <label>First name</label>
-  <input type="text" name="first_name" placeholder="" />
+  @e match {
+    case None => { <input type="text" name="first_name" /> }
+    case Some(e) => { <input type="text" name="first_name" value="@e.first" /> }
+  }
 </div>
 
 <div class="field">
   <label>Last name</label>
-  <input type="text" name="last_name" placeholder="" />
+  @e match {
+    case None => { <input type="text" name="last_name" /> }
+    case Some(e) => { <input type="text" name="last_name" value="@e.last" /> }
+  }
 </div>
 
 <div class="field">
