@@ -1,11 +1,11 @@
 @(employee: Option[Employee])
 
 @main("") {
-
   @employee match {
     case None    => {}
     case Some(e) => {
       <h2>@Employee.name(e)</h2>
+      <a href="/employees/@e.id/edit">Edit</a>
       <h3 class="role">
         @Role.findById(e.role).get.role
       </h3>
