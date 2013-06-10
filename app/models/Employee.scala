@@ -10,7 +10,7 @@ import play.api.libs.json._
 
 import lib.{ Gravatar }
 
-case class Employee(
+sealed case class Employee(
   id:      Option[Long]=None,
   first:   String,
   last:    String,

@@ -9,7 +9,7 @@ import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
 // A role represents a job title -> i.e software developer, project manager etc
-case class Role(id: Long, role: String)
+sealed case class Role(id: Long, role: String)
 
 object Role {
 

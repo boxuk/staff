@@ -5,7 +5,7 @@ import play.api.Play.current
 import anorm._
 import anorm.SqlParser._
 
-case class User(id: Long, username: String, email: String)
+sealed case class User(id: Long, username: String, email: String)
 
 object User {
 
