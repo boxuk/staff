@@ -20,7 +20,10 @@ POST   /employees                  controllers.Employees.create
 
 GET   /employees/:id/edit          controllers.Employees.edit(id: Long)
 PUT   /employees/edit              controllers.Employees.update
-# DELETE /employees/:id            controllers.Employees.delete(id: Long)
+
+DELETE /employees/:id              controllers.Employees.delete(id: Long)
+
+GET /search                        controllers.Employees.search
 
 ## Roles
 

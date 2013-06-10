@@ -123,5 +123,13 @@ object Employees extends Controller with Github {
   def withRole(role_id: Long) = Action {
     Ok(views.html.employees.index(Employee.byRole(role_id), Role.all))
   }
+
+  def search = Action { implicit request =>
+    val params: Option[String] = request.getQueryString("q")
+    params match {
+      case None => Ok
+      case Some(q) => Ok(views.html.employees.index(Employee.search(q), Role.all))
+    }
+  }
 }
 
