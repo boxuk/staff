@@ -40,8 +40,12 @@ object Employee {
   def gravatar(email: String, size: Int) =
     new Gravatar(email).url(size)
 
-  /** Build Employee without ID probably a much better way to do this
-   *  using tupled and apply */
+  /**
+   * Build Employee without ID probably a much better way to do this
+   *
+   * Use apply_unapply or something
+   *
+   */
   def build(e: (String,String,String,String,Int, String,String)): Employee = {
     Employee(None, e._1, e._2, e._3, e._4, e._5, e._6, e._7)
   }
@@ -110,6 +114,16 @@ object Employee {
     DB.withConnection { implicit c =>
       SQL("select * from employees where role_id = {role_id}").on('role_id -> role_id)
                                                               .as(employee *)
+    }
+  }
+
+  /** A simple search for employees by name */
+  def search(query: String): List[Employee] = {
+    DB.withConnection { implicit c =>
+      SQL("""select * from employees as e
+           where e.first_name like '%{query}%' or
+                 e.last_name like '%{query}%';""").on('query -> query)
+                                                 .as(employee *)
     }
   }
 
