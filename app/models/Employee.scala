@@ -121,8 +121,8 @@ object Employee {
   def search(query: String): List[Employee] = {
     DB.withConnection { implicit c =>
       SQL("""select * from employees as e
-           where e.first_name like '%{query}%' or
-                 e.last_name like '%{query}%';""").on('query -> query)
+             where e.first_name like '%{query}%'
+             or e.last_name like '%{query}%';""").on('query -> query)
                                                  .as(employee *)
     }
   }
