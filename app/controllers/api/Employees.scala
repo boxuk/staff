@@ -47,5 +47,13 @@ object Employees extends Controller {
   def create() = Action { Ok }
 
   def update() = Action { Ok }
+
+  def search() = Action { implicit request =>
+    val params: Option[String] = request.getQueryString("q")
+    params match {
+      case None => BadRequest
+      case Some(q) => Ok(Json.toJson(Employee.search(q)))
+    }
+  }
 }
 

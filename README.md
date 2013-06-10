@@ -32,6 +32,14 @@ Get all employees with a given role (i.e all designers, developers etc)
 curl -X GET -i http://localhost:9000/api/employees/roles/1
 ```
 
+### Search
+
+You can search for employees by first and last name
+
+```
+curl -X GET -i http://localhost:9000/api/search?q=jack
+```
+
 ## Deployment
 
 Staff is deployed and running on Heroku using Postgres

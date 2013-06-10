@@ -120,7 +120,8 @@ object Employee {
   /** A simple search for employees by name */
   def search(query: String): List[Employee] = {
     DB.withConnection { implicit c =>
-      val sql = "select * from employees where lower(first_name) like '%" ++ query ++ "%'"
+      val sql = "select * from employees where lower(first_name) like '%" +
+                 query + "%'" + "or lower(last_name) like '%" + query + "%'"
       SQL(sql).as(employee *)
     }
   }
