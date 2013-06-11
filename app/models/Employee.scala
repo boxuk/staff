@@ -22,6 +22,10 @@ sealed case class Employee(
 
 object Employee {
 
+  implicit val employeeFormat = Json.writes[Employee]
+
+  implicit val employeeReads  = Json.reads[Employee]
+
   val employee = {
     get[Long]("id")~
     get[String]("first_name")~
@@ -136,9 +140,5 @@ object Employee {
       SQL(sql).as(employee *)
     }
   }
-
-  implicit val employeeFormat = Json.writes[Employee]
-
-  implicit val employeeReads  = Json.reads[Employee]
 }
 
