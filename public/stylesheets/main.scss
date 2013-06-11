@@ -32,6 +32,8 @@ h1, h2, h3 { color: $brand; }
 
 .gravatar { width: 100px; height: 100px; background: #eee; border: 1px solid #ccc; }
 
+h2 a { color: $brand; }
+
 #main-nav {
   position: fixed;
   padding: 20px 24px;

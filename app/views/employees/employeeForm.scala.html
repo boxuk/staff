@@ -39,15 +39,15 @@
     @e match {
       case None => {
         @roles.map { role =>
-          <option value="@role.id">@role.role</option>
+          <option value="@role.id">@role.role.capitalize</option>
         }
       }
       case Some(e) => {
         @roles.map { role =>
           if (role.id == e.role_id) {
-            <option value="@role.id" selected="selected">@role.role</option>
+            <option value="@role.id" selected="selected">@role.role.capitalize</option>
           } else {
-            <option value="@role.id">@role.role</option>
+            <option value="@role.id">@role.role.capitalize</option>
           }
         }
       }
@@ -58,7 +58,7 @@
 <div class="field">
   <label>Website</label>
   @e match {
-    case None => { <input type="text" name="website" /> }
+    case None => { <input type="text" name="website" placeholder="e.g http://mysite.com" /> }
     case Some(e) => { <input type="text" name="website" value="@e.website" /> }
   }
 </div>
