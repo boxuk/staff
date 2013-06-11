@@ -61,15 +61,13 @@ object Employee {
   }
 
   def recent(): List[Employee] = DB.withConnection { implicit c =>
-    SQL("""select * from employees
-           order by id desc
-           limit 5"""
-    ).as(employee *)
+    SQL("select * from employees order by id desc limit 5").as(employee *)
   }
 
   def findById(id: Long): Option[Employee] = DB.withConnection { implicit c =>
-    SQL("select * from employees where id = {id}").on('id -> id)
-                                                  .as(employee.singleOpt)
+    SQL("select * from employees where id = {id}").on(
+      'id -> id
+    ).as(employee.singleOpt)
   }
 
   def create(employee: Employee): Unit = {
