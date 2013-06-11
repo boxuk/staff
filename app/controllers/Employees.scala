@@ -96,16 +96,16 @@ object Employees extends Controller with Github {
    * Updates an existing employee record
    *
    */
-  def update = Action { implicit request =>
+  def update(id: Long) = Action { implicit request =>
     employeeForm.bindFromRequest.fold(
       errors => {
         BadRequest(views.html.employees.edit(errors, Role.all, None))
       },
       employee => {
         val e: Employee = Employee.build(employee)
-        Employee.update(e)
-        Redirect(routes.Employees.index).flashing(
-          "message" -> "Employee was updated"
+        Employee.update(id, e)
+        Redirect(routes.Employees.show(id)).flashing(
+          "message" -> "Employee updated"
         )
       }
     )

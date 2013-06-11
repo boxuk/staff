@@ -85,20 +85,26 @@ object Employee {
     }
   }
 
-  def update(employee: Employee): Unit = {
-    val idx = employee.id
-    if (idx.isDefined) {
-      DB.withConnection { implicit c =>
-        SQL("""update employees set
-               first_name = {first}
-               last_name  = {last}
-               where id = {id}""")
-        .on(
-          'first -> employee.first,
-          'last  -> employee.last,
-          'id    -> idx.get
-        )
-      }
+  def update(id: Long, employee: Employee): Unit = {
+    DB.withConnection { implicit c =>
+      SQL("""update employees set
+             first_name = {first},
+             last_name = {last},
+             email = {email},
+             phone = {phone},
+             role_id = {role},
+             website = {website},
+             bio = {bio}
+             where id = {id}""").on(
+        'first -> employee.first,
+        'last  -> employee.last,
+        'email  -> employee.email,
+        'phone -> employee.phone,
+        'role  -> employee.role,
+        'website -> employee.website,
+        'bio   -> employee.bio,
+        'id    -> id
+      ).executeUpdate()
     }
   }
 
