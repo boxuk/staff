@@ -107,20 +107,28 @@ object Employee {
 
   def delete(id: Long): Unit = {
     DB.withConnection { implicit c =>
-      SQL("delete from employees where id = {id}").on('id -> id)
-                                                  .executeUpdate()
+      SQL("delete from employees where id = {id}").on(
+      'id -> id
+      ).executeUpdate()
     }
   }
 
-  /** Finds all employees with a given role */
+  /**
+   * Finds all employees with a given role
+   *
+   */
   def byRole(role_id: Long): List[Employee] = {
     DB.withConnection { implicit c =>
-      SQL("select * from employees where role_id = {role_id}").on('role_id -> role_id)
-                                                              .as(employee *)
+      SQL("select * from employees where role_id = {role_id}").on(
+        'role_id -> role_id
+      ).as(employee *)
     }
   }
 
-  /** A simple search for employees by name */
+  /**
+   * A simple search for employees by name
+   *
+   */
   def search(query: String): List[Employee] = {
     DB.withConnection { implicit c =>
       val sql = "select * from employees where lower(first_name) like '%" +
@@ -129,8 +137,8 @@ object Employee {
     }
   }
 
-  // JSON serialization
   implicit val employeeFormat = Json.writes[Employee]
+
   implicit val employeeReads  = Json.reads[Employee]
 }
 
