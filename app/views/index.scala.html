@@ -11,8 +11,8 @@
              alt="@Employee.name(employee)"
              class="gravatar" />
         </div>
-        <a href="/employees/@employee.id">@Employee.name(employee)</a>
-        <div>@Role.findById(employee.role).get.role</div>
+        <a href="/employees/@employee.id">@employee.first</a>
+        <div>@Role.findById(employee.role).get.role.capitalize</div>
       </div>
     }
   </section>

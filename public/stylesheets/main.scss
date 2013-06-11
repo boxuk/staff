@@ -30,6 +30,8 @@ h1, h2, h3 { color: $brand; }
   .employee { margin: 20px 20px 0 0; }
 }
 
+.gravatar { width: 100px; height: 100px; background: #eee; border: 1px solid #ccc; }
+
 #main-nav {
   position: fixed;
   padding: 20px 24px;
@@ -77,5 +79,21 @@ label { color: #666; }
   margin: 10px 10px 0 0;
 }
 
- .role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }
+.role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }
+
+.no-margin { margin: 0; padding: 0 }
+
+.navigation {
+  background: #333;
+  height: 40px;
+  width: 100%;
+
+  ul { margin: 0; padding: 0; list-style: none; }
+  li {
+    display: inline;
+    margin-right: 20px;
+    a { color: #EEE; }
+  }
+
+}
 
