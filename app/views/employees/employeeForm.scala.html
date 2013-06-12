@@ -18,32 +18,57 @@
 
 <div class="field">
   <label>Email</label>
-  <input type="email" name="email" placeholder="" />
+  @e match {
+    case None => { <input type="email" name="email" /> }
+    case Some(e) => { <input type="email" name="email" value="@e.email" /> }
+  }
 </div>
 
 <div class="field">
   <label>Phone</label>
-  <input type="text" name="phone" placeholder="" />
+  @e match {
+    case None => { <input type="text" name="phone" /> }
+    case Some(e) => { <input type="text" name="phone" value="@e.phone" /> }
+  }
 </div>
 
 <div class="field">
   <label>Role</label>
   <br/>
   <select name="role">
-    @roles.map { role =>
-      <option value="@role.id">@role.role</option>
+    @e match {
+      case None => {
+        @roles.map { role =>
+          <option value="@role.id">@role.role.capitalize</option>
+        }
+      }
+      case Some(e) => {
+        @roles.map { role =>
+          if (role.id == e.role_id) {
+            <option value="@role.id" selected="selected">@role.role.capitalize</option>
+          } else {
+            <option value="@role.id">@role.role.capitalize</option>
+          }
+        }
+      }
     }
   </select>
 </div>
 
 <div class="field">
   <label>Website</label>
-  <input type="text" name="website" placeholder="" />
+  @e match {
+    case None => { <input type="text" name="website" placeholder="e.g http://mysite.com" /> }
+    case Some(e) => { <input type="text" name="website" value="@e.website" /> }
+  }
 </div>
 
 <div class="field">
   <label>Bio (a brief description about your interests)</label>
-  <textarea name="bio"></textarea>
+  @e match {
+    case None => { <textarea name="bio"></textarea> }
+    case Some(e) => { <textarea name="bio">@e.bio</textarea> }
+  }
 </div>
 
 <input type="submit" value="Submit" class="btn" />

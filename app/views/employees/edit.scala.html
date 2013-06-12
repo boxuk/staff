@@ -8,7 +8,7 @@
 
   @formErrors(editEmployeeForm)
 
-  @form(routes.Employees.update) {
+  @form(routes.Employees.update(1)) {
       @employeeForm(roles, employee)
   }
 }

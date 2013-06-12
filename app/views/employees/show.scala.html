@@ -4,10 +4,12 @@
   @employee match {
     case None    => {}
     case Some(e) => {
-      <h2>@Employee.name(e)</h2>
-      <a href="/employees/@e.id/edit">Edit</a>
+      <h2>
+        <a href="/employees/@e.id/edit">@Employee.name(e)</a>
+      </h2>
+
       <h3 class="role">
-        @Role.findById(e.role).get.role
+        @Role.findById(e.role).get.role.capitalize
       </h3>
       <img src="@Employee.gravatar(e.email, 100)" alt="@Employee.name(e)" class="gravatar" />
       <p>EMAIL: @e.email</p>

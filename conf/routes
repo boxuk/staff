@@ -19,7 +19,7 @@ GET    /employees/:id              controllers.Employees.show(id: Long)
 POST   /employees                  controllers.Employees.create
 
 GET   /employees/:id/edit          controllers.Employees.edit(id: Long)
-PUT   /employees/edit              controllers.Employees.update
+POST  /employees/:id/edit          controllers.Employees.update(id: Long)
 
 DELETE /employees/:id              controllers.Employees.delete(id: Long)
 

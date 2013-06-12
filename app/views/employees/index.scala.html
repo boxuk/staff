@@ -2,17 +2,15 @@
 
 @main("BoxUK Staff") {
 
-  @roles.map { role =>
-    <li>
-      <a href="/employees/roles/@role.id">
-        @role.role
-      </a>
-    </li>
-  }
   @employees.map { employee =>
     <div class="employee">
       <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />
-      <div class="employee-name"><a href="/employees/@employee.id">@Employee.name(employee)</a></div>
+      <div class="employee-name">
+        <a href="/employees/@employee.id">@employee.first</a>
+      </div>
+      <a href="/employees/roles/@employee.role">
+        @Role.findById(employee.role).get.role.capitalize
+      </a>
     </div>
   }
 }

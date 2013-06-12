@@ -3,10 +3,12 @@
 @main("All roles") {
 
   <h2>All roles</h2>
-  <a href="/roles/new">Add a new role</a>
-  <ul>
+
+  <p><a href="/roles/new">Add a new role</a></p>
+
+  <ul class="no-margin">
     @roles.map { role =>
-      <li>@role.role</li>
+      <li>@role.role.capitalize</li>
     }
   </ul>
 }

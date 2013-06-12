@@ -22,6 +22,10 @@ sealed case class Employee(
 
 object Employee {
 
+  implicit val employeeFormat = Json.writes[Employee]
+
+  implicit val employeeReads  = Json.reads[Employee]
+
   val employee = {
     get[Long]("id")~
     get[String]("first_name")~
@@ -57,15 +61,13 @@ object Employee {
   }
 
   def recent(): List[Employee] = DB.withConnection { implicit c =>
-    SQL("""select * from employees
-           order by id desc
-           limit 5"""
-    ).as(employee *)
+    SQL("select * from employees order by id desc limit 5").as(employee *)
   }
 
   def findById(id: Long): Option[Employee] = DB.withConnection { implicit c =>
-    SQL("select * from employees where id = {id}").on('id -> id)
-                                                  .as(employee.singleOpt)
+    SQL("select * from employees where id = {id}").on(
+      'id -> id
+    ).as(employee.singleOpt)
   }
 
   def create(employee: Employee): Unit = {
@@ -85,39 +87,50 @@ object Employee {
     }
   }
 
-  def update(employee: Employee): Unit = {
-    val idx = employee.id
-    if (idx.isDefined) {
-      DB.withConnection { implicit c =>
-        SQL("""update employees set
-               first_name = {first}
-               last_name  = {last}
-               where id = {id}""")
-        .on(
-          'first -> employee.first,
-          'last  -> employee.last,
-          'id    -> idx.get
-        )
-      }
+  /**
+   * Update an existing employee record
+   *
+   */
+  def update(id: Long, employee: Employee): Unit = {
+    DB.withConnection { implicit c =>
+      SQL("""update employees set first_name = {first}, last_name = {last}, email = {email},
+             phone = {phone}, role_id = {role}, website = {website}, bio = {bio} where id = {id}""").on(
+        'first   -> employee.first,
+        'last    -> employee.last,
+        'email   -> employee.email,
+        'phone   -> employee.phone,
+        'role    -> employee.role,
+        'website -> employee.website,
+        'bio     -> employee.bio,
+        'id      -> id
+      ).executeUpdate()
     }
   }
 
   def delete(id: Long): Unit = {
     DB.withConnection { implicit c =>
-      SQL("delete from employees where id = {id}").on('id -> id)
-                                                  .executeUpdate()
+      SQL("delete from employees where id = {id}").on(
+      'id -> id
+      ).executeUpdate()
     }
   }
 
-  /** Finds all employees with a given role */
+  /**
+   * Finds all employees with a given role
+   *
+   */
   def byRole(role_id: Long): List[Employee] = {
     DB.withConnection { implicit c =>
-      SQL("select * from employees where role_id = {role_id}").on('role_id -> role_id)
-                                                              .as(employee *)
+      SQL("select * from employees where role_id = {role_id}").on(
+        'role_id -> role_id
+      ).as(employee *)
     }
   }
 
-  /** A simple search for employees by name */
+  /**
+   * A simple search for employees by name
+   *
+   */
   def search(query: String): List[Employee] = {
     DB.withConnection { implicit c =>
       val sql = "select * from employees where lower(first_name) like '%" +
@@ -125,9 +138,5 @@ object Employee {
       SQL(sql).as(employee *)
     }
   }
-
-  // JSON serialization
-  implicit val employeeFormat = Json.writes[Employee]
-  implicit val employeeReads  = Json.reads[Employee]
 }
 

@@ -22,7 +22,7 @@ class ApplicationSpec extends Specification {
       running(FakeApplication()) {
         val page = route(FakeRequest(GET, "/")).get
         status(page) must equalTo(OK)
-        //contentAsString(home) must contain ("")
+        contentAsString(page) must contain ("Recent People")
       }
     }
     "render the employee listing page" in {
@@ -34,6 +34,18 @@ class ApplicationSpec extends Specification {
     "render the new employee page" in {
       running(FakeApplication()) {
         val page = route(FakeRequest(GET, "/employees/new")).get
+        status(page) must equalTo(OK)
+      }
+    }
+    "render the employee show page" in {
+      running(FakeApplication()) {
+        val page = route(FakeRequest(GET, "/employees/1")).get
+        status(page) must equalTo(OK)
+      }
+    }
+    "render the new employee edit" in {
+      running(FakeApplication()) {
+        val page = route(FakeRequest(GET, "/employees/1/edit")).get
         status(page) must equalTo(OK)
       }
     }
