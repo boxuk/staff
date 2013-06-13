@@ -14,6 +14,22 @@ There are so many new starters in Box UK it gets hard to keep track of new hires
 
 Staff allows people to look up email addresses, find out information about what people are into, see who works where and quickly find the right person to answer their questions.
 
+## Deploying the app
+
+This application is built to run on Heroku easily. To deploy an instance to heroku run
+
+
+```
+heroku create --remote production
+git push heroku production
+
+# Check the logs if you have any issues
+heroku logs
+
+# Connect to the console
+heroku run sbt play
+```
+
 ## API
 
 ### Employees
