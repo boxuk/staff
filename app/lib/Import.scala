@@ -8,13 +8,11 @@ import play.api.libs.json._
  *
  */
 object Import {
-
-  def loadFile(): String = {
-    val f = "https://dl.dropboxusercontent.com/u/6475135/data.json"
-    io.Source.fromURL(f).mkString
+  def loadFile(path: String): String = {
+    io.Source.fromFile(path)
   }
 
-  def parse() = {
-    Json.parse(loadFile())
+  def parse(file: String) = {
+    Json.parse(loadFile(file))
   }
 }
