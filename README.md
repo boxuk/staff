@@ -14,6 +14,24 @@ There are so many new starters in Box UK it gets hard to keep track of new hires
 
 Staff allows people to look up email addresses, find out information about what people are into, see who works where and quickly find the right person to answer their questions.
 
+## Running the app
+
+Staff is a Play2 application. You will need Scala, Postgres and SBT installed.
+
+To get started 
+
++ download the most recent version of Play2
++ git clone git@github.com:boxuk/staff.git
++ cd staff
+
+Create the postgres db
+
++ createdb staff
+
+Run the application
+
++ play run
+
 ## Deploying the app
 
 This application is built to run on Heroku easily. To deploy an instance to heroku run
