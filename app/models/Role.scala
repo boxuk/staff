@@ -30,7 +30,7 @@ object Role {
   }
 
   def findByName(name: String): Option[Role] = DB.withConnection { implicit c =>
-    SQL("select * from roles where role = {name}").on('name -> name)
+    SQL("select * from roles where role_type = {name}").on('name -> name)
                                                   .as(role.singleOpt)
 
   }

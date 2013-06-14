@@ -1,5 +1,7 @@
 package models
 
+import play.api._
+import play.api.mvc._
 import play.api.db._
 import play.api.Play.current
 import anorm._
@@ -22,7 +24,22 @@ sealed case class Employee(
 
 object Employee {
 
-  implicit val employeeFormat = Json.writes[Employee]
+  implicit val employeeFormat = new Writes[Employee] {
+    def writes(e: Employee): JsValue = {
+      Json.obj(
+        "id" -> e.id,
+        "first" -> e.first,
+        "last" -> e.last,
+        "email" -> e.email,
+        "phone" -> e.phone,
+        "role" -> e.role,
+        "website" -> e.website,
+        "bio" -> e.bio,
+        "html_url" -> controllers.routes.Employees.show(e.id.get).url,
+        "gravatar_id" -> new Gravatar(e.email).hash
+      )
+    }
+  }
 
   implicit val employeeReads  = Json.reads[Employee]
 
@@ -46,6 +63,12 @@ object Employee {
     Role.findById(role) match {
       case None => "None"
       case Some(r) => r.role
+    }
+
+  def getRoleId(role: String) =
+    Role.findByName(role) match {
+      case None => "None"
+      case Some(r) => r.id
     }
 
   def gravatar(email: String, size: Int) =
@@ -90,7 +113,7 @@ object Employee {
         'last    -> employee.last,
         'email   -> employee.email,
         'phone   -> employee.phone,
-        'role    -> employee.role,
+        'role    -> getRoleId(employee.role),
         'website -> employee.website,
         'bio     -> employee.bio
       ).executeUpdate()
@@ -109,7 +132,7 @@ object Employee {
         'last    -> employee.last,
         'email   -> employee.email,
         'phone   -> employee.phone,
-        'role    -> employee.role,
+        'role    -> getRoleId(employee.role),
         'website -> employee.website,
         'bio     -> employee.bio,
         'id      -> id
@@ -149,4 +172,3 @@ object Employee {
     }
   }
 }
-

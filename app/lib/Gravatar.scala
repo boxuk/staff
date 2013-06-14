@@ -30,5 +30,7 @@ class Gravatar(private val email: String) {
   def url(size: Int): String = {
     "http://www.gravatar.com/avatar/" + emailHash + "?d=mm&s=" + size
   }
+
+  def hash() = emailHash
 }
 
