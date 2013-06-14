@@ -8,6 +8,8 @@
         <a href="/employees/@e.id/edit">@Employee.name(e)</a>
       </h2>
 
+      <p><a href="/employees/@e.id/edit">Edit</a></p>
+
       <h3 class="role">
         @Role.findById(e.role).get.role.capitalize
       </h3>
