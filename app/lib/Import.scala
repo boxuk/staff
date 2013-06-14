@@ -8,8 +8,10 @@ import play.api.libs.json._
  *
  */
 object Import {
+
   def loadFile(path: String): String = {
-    io.Source.fromFile(path)
+    //io.Source.fromFile(path)
+    path
   }
 
   def parse(file: String) = {
