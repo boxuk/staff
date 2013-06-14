@@ -1,5 +1,7 @@
 package models
 
+import play.api._
+import play.api.mvc._
 import play.api.db._
 import play.api.Play.current
 import anorm._
@@ -22,7 +24,22 @@ sealed case class Employee(
 
 object Employee {
 
-  implicit val employeeFormat = Json.writes[Employee]
+  implicit val employeeFormat = new Writes[Employee] {
+    def writes(e: Employee): JsValue = {
+      Json.obj(
+        "id" -> e.id,
+        "first" -> e.first,
+        "last" -> e.last,
+        "email" -> e.email,
+        "phone" -> e.phone,
+        "role" -> e.role,
+        "website" -> e.website,
+        "bio" -> e.bio,
+        "html_url" -> controllers.routes.Employees.show(e.id.get).url,
+        "gravatar_id" -> new Gravatar(e.email).hash
+      )
+    }
+  }
 
   implicit val employeeReads  = Json.reads[Employee]
 
@@ -149,4 +166,3 @@ object Employee {
     }
   }
 }
-

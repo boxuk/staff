@@ -52,8 +52,7 @@ object Employees extends Controller {
     val params: Option[String] = request.getQueryString("q")
     params match {
       case None => BadRequest
-      case Some(q) => Ok(Json.toJson(Employee.search(q)))
+      case Some(q) => Ok(Json.toJson(Employee.search(q))).as(json)
     }
   }
 }
-
