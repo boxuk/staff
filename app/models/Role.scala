@@ -43,6 +43,14 @@ object Role {
     }
   }
 
+  def delete(id: Long): Unit = {
+    DB.withConnection { implicit c =>
+      SQL("delete from roles where id = {id}").on(
+      'id -> id
+      ).executeUpdate()
+    }
+  }
+
   // JSON serialization methods
   implicit val roleFormat = Json.writes[Role]
   implicit val roleReads  = Json.reads[Role]
