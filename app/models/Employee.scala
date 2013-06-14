@@ -65,6 +65,12 @@ object Employee {
       case Some(r) => r.role
     }
 
+  def getRoleId(role: String) =
+    Role.findByName(role) match {
+      case None => "None"
+      case Some(r) => r.id
+    }
+
   def gravatar(email: String, size: Int) =
     new Gravatar(email).url(size)
 
@@ -107,7 +113,7 @@ object Employee {
         'last    -> employee.last,
         'email   -> employee.email,
         'phone   -> employee.phone,
-        'role    -> employee.role,
+        'role    -> getRoleId(employee.role),
         'website -> employee.website,
         'bio     -> employee.bio
       ).executeUpdate()
@@ -126,7 +132,7 @@ object Employee {
         'last    -> employee.last,
         'email   -> employee.email,
         'phone   -> employee.phone,
-        'role    -> employee.role,
+        'role    -> getRoleId(employee.role),
         'website -> employee.website,
         'bio     -> employee.bio,
         'id      -> id
