@@ -16,7 +16,7 @@ sealed case class Employee(
   last:    String,
   email:   String,
   phone:   String,
-  role:    Int,
+  role:    String,
   website: String,
   bio:     String)
 
@@ -36,10 +36,17 @@ object Employee {
     get[String]("website")~
     get[String]("bio") map {
       case (id~first~last~email~phone~role~website~bio) => {
-        Employee(Some(id), first, last, email, phone, role, website, bio)
+        val roleName = getRoleName(role)
+        Employee(Some(id), first, last, email, phone, roleName, website, bio)
       }
     }
   }
+
+  def getRoleName(role: Long) =
+    Role.findById(role) match {
+      case None => "None"
+      case Some(r) => r.role
+    }
 
   def gravatar(email: String, size: Int) =
     new Gravatar(email).url(size)
@@ -50,8 +57,9 @@ object Employee {
    * Use apply_unapply or something
    *
    */
-  def build(e: (String,String,String,String,Int, String,String)): Employee = {
-    Employee(None, e._1, e._2, e._3, e._4, e._5, e._6, e._7)
+  def build(e: (String,String,String,String,Int,String,String)): Employee = {
+    val roleName = getRoleName(e._5)
+    Employee(None, e._1, e._2, e._3, e._4, roleName, e._6, e._7)
   }
 
   def name(e: Employee): String = e.first + " " + e.last
@@ -60,7 +68,7 @@ object Employee {
     SQL("""select * from employees""").as(employee *)
   }
 
-  def groupByRole(): Map[Int, List[Employee]] = all.groupBy(_.role)
+  def groupByRole(): Map[String, List[Employee]] = all.groupBy(_.role)
 
   def recent(): List[Employee] = DB.withConnection { implicit c =>
     SQL("select * from employees order by id desc limit 5").as(employee *)

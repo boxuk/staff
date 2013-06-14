@@ -1,9 +1,9 @@
-@(employees: Map[Int, List[Employee]], roles: List[Role])
+@(employees: Map[String, List[Employee]], roles: List[Role])
 
 @main("BoxUK Staff") {
   @employees.map { case (role,employees) =>
     <section class="role_type">
-      <h4>@Role.findById(role).get.role.capitalize</h4>
+      <h4>@role.capitalize</h4>
       @employees.map { employee =>
       <div class="employee">
         <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />

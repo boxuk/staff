@@ -12,7 +12,7 @@
              class="gravatar" />
         </div>
         <a class="employee-name" href="/employees/@employee.id">@employee.first</a>
-        <div>@Role.findById(employee.role).get.role.capitalize</div>
+        <div>@employee.role</div>
       </div>
     }
   </section>

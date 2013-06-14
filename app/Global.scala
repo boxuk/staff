@@ -18,7 +18,7 @@ object SeedData {
         "developer",
         "consultant",
         "project manager"
-      ).foreach { r => Role.create(r) }
+      ).foreach { r => if (Role.findByName(r).isEmpty) Role.create(r) }
     }
   }
 }

@@ -11,7 +11,7 @@
       <p><a href="/employees/@e.id/edit">Edit</a></p>
 
       <h3 class="role">
-        @Role.findById(e.role).get.role.capitalize
+        @e.role
       </h3>
       <img src="@Employee.gravatar(e.email, 100)" alt="@Employee.name(e)" class="gravatar" />
       <p>EMAIL: @e.email</p>

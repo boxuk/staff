@@ -29,6 +29,12 @@ object Role {
                                                   .as(role.singleOpt)
   }
 
+  def findByName(name: String): Option[Role] = DB.withConnection { implicit c =>
+    SQL("select * from roles where role = {name}").on('name -> name)
+                                                  .as(role.singleOpt)
+
+  }
+
   def create(role: String): Unit = {
     DB.withConnection { implicit c =>
       SQL("insert into roles (role_type) values ({role})").on(
