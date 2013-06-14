@@ -1,6 +1,16 @@
 body { background: #f3f3f3; margin: 0; padding: 0; }
 
+* { font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
 .container { width: 90%; }
+
+.btn, input.btn {
+  background: #16a085;
+  display: block;
+  color: #FFF;
+  padding: 10px 30px;
+
+}
 
 .alert {
   padding: 20px;
@@ -11,7 +21,7 @@ body { background: #f3f3f3; margin: 0; padding: 0; }
 
 $brand: #2a323a;
 
-h1, h2, h3 { color: $brand; }
+h1, h2, h3 { color: $brand; text-transform: capitalize }
 
 // HOME
 
@@ -79,6 +89,16 @@ label { color: #666; }
 .employee {
   float: left;
   margin: 10px 10px 0 0;
+}
+
+.employee-name { text-transform: capitalize; }
+
+.role_type {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  padding: 0 0 20px 0;
 }
 
 .role { font-size: 20px; font-family: georgia; font-weight: 100; color: #666; margin: 0 0 20px; }

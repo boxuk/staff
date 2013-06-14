@@ -60,6 +60,8 @@ object Employee {
     SQL("""select * from employees""").as(employee *)
   }
 
+  def groupByRole(): Map[Int, List[Employee]] = all.groupBy(_.role)
+
   def recent(): List[Employee] = DB.withConnection { implicit c =>
     SQL("select * from employees order by id desc limit 5").as(employee *)
   }

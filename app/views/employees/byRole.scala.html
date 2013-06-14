@@ -1,0 +1,17 @@
+@(employees: Map[Int, List[Employee]], roles: List[Role])
+
+@main("BoxUK Staff") {
+  @employees.map { case (role,employees) =>
+    <section class="role_type">
+      <h4>@Role.findById(role).get.role.capitalize</h4>
+      @employees.map { employee =>
+      <div class="employee">
+        <img src="@Employee.gravatar(employee.email, 100)" alt="@Employee.name(employee)" class="gravatar" />
+        <div class="employee-name">
+          <a href="/employees/@employee.id">@employee.first</a>
+        </div>
+      </div>
+    }
+    </section>
+  }
+}

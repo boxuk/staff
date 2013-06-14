@@ -36,7 +36,7 @@ object Employees extends Controller with Github {
   // CRUD
 
   def index() = Action {
-    Ok(views.html.employees.index(Employee.all, Role.all))
+    Ok(views.html.employees.byRole(Employee.groupByRole, Role.all))
   }
 
   def edit(id: Long) = Action {
