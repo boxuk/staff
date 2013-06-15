@@ -1,1 +1,133 @@
-body{background:#f3f3f3;margin:0;padding:0}*{font-family:'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif}.container{width:90%}.btn,input.btn{background:#16a085;display:block;color:#FFF;padding:10px 30px}.alert{padding:20px;background:#eee;border:2px solid #ccc;margin:20px 0}h1,h2,h3{color:#2a323a;text-transform:capitalize}#hero{height:400px;background:#2a323a url(/assets/images/office.jpg) no-repeat center top fixed;background-size:cover;width:100%}#hero h1{text-align:center;padding-top:140px;color:#FFF}#hero h2{text-align:center;color:#FFF;font-size:20px}#recent{padding:20px 0}#recent .employee{margin:20px 20px 0 0}.gravatar{width:100px;height:100px;background:#eee;border:1px solid #ccc}h2 a{color:#2a323a}#main-nav{position:fixed;padding:20px 24px;width:100%;background:#2a323a;top:0;left:0}#main-nav ul{margin:0;padding:0}#main-nav li{display:inline;color:#FFF;margin-right:10px}#main-nav a{color:#fff}.avatar{width:100px;border:1px solid #ccc;background:#eee;margin:24px 0}textarea{width:100%;height:300px;margin:0 0 20px}label{color:#666}.field{margin:0 0 10px}#main{padding:24px;background:#FFF;border:1px solid #eee;margin:80px auto;overflow:hidden;box-shadow:1px 1px 0 #ccc}.employee{float:left;margin:10px 10px 0 0}.employee-name{text-transform:capitalize}.role_type{clear:both;display:block;overflow:hidden;border-bottom:1px solid #eee;padding:0 0 20px 0}.role{font-size:20px;font-family:georgia;font-weight:100;color:#666;margin:0 0 20px}.no-margin{margin:0;padding:0}.navigation{background:#333;height:40px;width:100%}.navigation ul{margin:0;padding:0;list-style:none}.navigation li{display:inline;margin-right:20px}.navigation li a{color:#EEE}
+body {
+  background: #f3f3f3;
+  margin: 0;
+  padding: 0; }
+
+* {
+  font-family: 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
+.container {
+  width: 90%; }
+
+.btn, input.btn {
+  background: #16a085;
+  display: block;
+  color: #FFF;
+  padding: 10px 30px; }
+
+.alert {
+  padding: 20px;
+  background: #eee;
+  border: 2px solid #ccc;
+  margin: 20px 0; }
+
+h1, h2, h3 {
+  color: #2a323a;
+  text-transform: capitalize; }
+
+#hero {
+  height: 400px;
+  background: #2a323a url(/assets/images/office.jpg) no-repeat center top fixed;
+  background-size: cover;
+  width: 100%; }
+  #hero h1 {
+    text-align: center;
+    padding-top: 140px;
+    color: #FFF; }
+  #hero h2 {
+    text-align: center;
+    color: #FFF;
+    font-size: 20px; }
+
+#recent {
+  padding: 20px 0; }
+  #recent .employee {
+    margin: 20px 20px 0 0; }
+
+.gravatar {
+  background: #eee;
+  border: 1px solid #ccc; }
+
+h2 a {
+  color: #2a323a; }
+
+#main-nav {
+  position: fixed;
+  padding: 20px 24px;
+  width: 100%;
+  background: #2a323a;
+  top: 0;
+  left: 0; }
+  #main-nav ul {
+    margin: 0;
+    padding: 0; }
+  #main-nav li {
+    display: inline;
+    color: #FFF;
+    margin-right: 10px; }
+  #main-nav a {
+    color: white; }
+
+.avatar {
+  width: 100px;
+  border: 1px solid #ccc;
+  background: #eee;
+  margin: 24px 0; }
+
+textarea {
+  width: 100%;
+  height: 300px;
+  margin: 0 0 20px; }
+
+label {
+  color: #666; }
+
+.field {
+  margin: 0 0 10px; }
+
+#main {
+  padding: 24px;
+  background: #FFF;
+  border: 1px solid #eee;
+  margin: 80px auto;
+  overflow: hidden;
+  box-shadow: 1px 1px 0 #ccc; }
+
+.employee {
+  float: left;
+  margin: 10px 10px 0 0; }
+
+.employee-name {
+  text-transform: capitalize; }
+
+.role_type {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid #eee;
+  padding: 0 0 20px 0; }
+
+.role {
+  font-size: 20px;
+  font-family: georgia;
+  font-weight: 100;
+  color: #666;
+  margin: 0 0 20px; }
+
+.no-margin {
+  margin: 0;
+  padding: 0; }
+
+.navigation {
+  background: #333;
+  height: 40px;
+  width: 100%; }
+  .navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  .navigation li {
+    display: inline;
+    margin-right: 20px; }
+    .navigation li a {
+      color: #EEE; }

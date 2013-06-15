@@ -1,1 +1,1 @@
-sass --watch public/stylesheets:public/stylesheets --style compressed
+sass --watch public/stylesheets:public/stylesheets --style nested
