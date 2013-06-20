@@ -11,7 +11,10 @@ import play.api.libs.ws._
 import play.api.libs.concurrent._
 import play.api.libs.concurrent.Execution.Implicits._
 
+import lib.{ Validate }
+
 trait Github {
+
   def get(url: String) =
     WS.url(url).get().map { response => response.body }
 
@@ -25,10 +28,10 @@ object Employees extends Controller with Github {
     tuple(
       "first_name"   -> nonEmptyText,
       "last_name"    -> nonEmptyText,
-      "email"        -> nonEmptyText,
+      "email"        -> nonEmptyText.verifying("Email already exists", Validate.emailExists(_)),
       "phone"        -> nonEmptyText,
       "role"         -> number,
-      "website"      -> text,
+      "website"      -> text.verifying( "Must be a valid url", Validate.isUrl(_)),
       "bio"          -> text
     )
   )

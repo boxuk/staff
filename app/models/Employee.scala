@@ -25,6 +25,7 @@ sealed case class Employee(
 object Employee {
 
   implicit val employeeFormat = new Writes[Employee] {
+
     def writes(e: Employee): JsValue = {
       Json.obj(
         "id" -> e.id,
@@ -97,10 +98,21 @@ object Employee {
     SQL("select * from employees order by id desc limit 5").as(employee *)
   }
 
+  /**
+   * Find an employee by a generic value
+   *
+   */
+  def findByType[T](identifier: T, value: T): Option[Employee] = DB.withConnection { implicit c =>
+    SQL("select * from employees where {identifier} = {value}").on(
+      'identifier -> identifier,
+      'value      -> value
+    ).as(employee singleOpt)
+  }
+
   def findById(id: Long): Option[Employee] = DB.withConnection { implicit c =>
     SQL("select * from employees where id = {id}").on(
       'id -> id
-    ).as(employee.singleOpt)
+    ).as(employee singleOpt)
   }
 
   def create(employee: Employee): Unit = {
