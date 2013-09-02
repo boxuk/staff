@@ -11,6 +11,7 @@ object ApplicationBuild extends Build {
     // Add your project dependencies here,
     jdbc,
     anorm,
+    "com.typesafe.slick" %% "slick" % "1.0.1",
     "postgresql" % "postgresql" % "9.1-901.jdbc4"
   )
 

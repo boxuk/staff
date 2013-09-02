@@ -10,10 +10,14 @@ import java.net.URL
  *
  */
 
-sealed case class User(account_id: Long, email: String, firstname: String, id: Long, lastname: String)
+sealed case class User(account_id: Long, 
+                       email: String, 
+                       firstname: String, 
+                       id: Long, 
+                       lastname: String)
 
 object User {
-  implicit val userReads  = Json.reads[User]
+  implicit val userReads = Json.reads[User]
 }
 
 object Import {
